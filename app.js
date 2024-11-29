@@ -21,7 +21,10 @@ mongoose.connect(process.env.MONGO_STRING).then(() => {
     console.log(error);
 });
 
-
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
 app.use('/user',require('./routes/user.js'));
 app.use('/expense',require('./routes/expense'));
+
 
