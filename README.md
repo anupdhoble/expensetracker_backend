@@ -3,7 +3,9 @@
 
 > **Disclaimer**: The frontend code for this project was used as a foundation from a previous project. It already included the logic for creating expenses. In this project, I have added additional features for **Authentication**, **Authorization**, and **Role-Based Access Control (RBAC)**. These features were integrated to secure the application and manage user access based on roles such as Admin, Moderator, and User.
 
-> **Note**: Due to some dependency issues and problems with the `dotenv` library, I am currently facing errors in deploying the application on **Netlify**. I am working to resolve these issues and will update the deployment link once fixed.
+> **Note**: Due to some dependency issues and problems with the `dotenv` library, I am currently facing errors in deploying the frontend React.js application on **Netlify**. I am working to resolve these issues and will update the deployment link once fixed. **But frontend code is included in directory :- Frontend**
+
+> Backend is succefully deployed on Render : https://expensetracker-backend-gu9c.onrender.com 
 
 ---
 
@@ -36,7 +38,7 @@ This project implements a secure **Authentication** and **Authorization** system
 
 ### **Authorization Middleware**
    
-   - In addition to the authentication middleware, the **Authorization Middleware** is used for specific routes where user permissions need to be validated. For example, in the **Delete User** route, this middleware checks if the initiator has sufficient access permissions to delete another user.
+   - In addition to the authentication middleware, the **Authorization Middleware** (checkPermissions.js file) is used for specific routes where user permissions need to be validated. For example, in the **Delete User** route, this middleware checks if the initiator has sufficient access permissions to delete another user.
    - This middleware checks:
      - If the **role** of the authenticated user (Admin, Moderator, User) matches the required role for the action.
      - If the user is authorized to perform actions like deleting or modifying resources based on their role.
@@ -58,7 +60,7 @@ This project implements a secure **Authentication** and **Authorization** system
 ## Workflow
 
 ### 1. **User Registration**
-   - A new user is registered with their `username`, `email`, `password`, and `role`.
+   - A new user is registered with their `username`, `email`, `password`.
    - The password is hashed using **bcrypt** before storing it in the MongoDB database.
    - Once registered, a **JWT** is issued for the user.
 
@@ -68,9 +70,9 @@ This project implements a secure **Authentication** and **Authorization** system
    - If the credentials are valid, a **JWT** is issued and returned to the user for subsequent requests.
 
 ### 3. **Protected Routes**
-   - Routes that require authentication and authorization check if the request includes a valid JWT token.
+   - Routes that require authentication  check if the request includes a valid JWT token.
    - The token is verified using the secret key `"I am Anup"`, and if valid, the user’s data (ID and role) is attached to the request object (`req.user`).
-   - **Authorization middleware** checks the user’s role (retrieved from the JWT) to determine if they are allowed to access the resource or perform a specific action (e.g., delete a user, create an expense).
+   - **Authorization middleware** checks the user’s role (retrieved from the JWT) to determine if they are allowed to access the resource or perform a specific action (e.g., delete a user).
 
 ## Security Features
    - Passwords are securely hashed using **bcrypt** before they are stored in the database.
@@ -84,3 +86,16 @@ This project implements a secure **Authentication** and **Authorization** system
    - **bcryptjs**: Library for securely hashing passwords.
    - **MongoDB**: Database for storing user data.
    - **Mongoose**: ODM for interacting with MongoDB in an object-oriented way.
+
+##Routes
+/expense/getAll : get all expenses of the userid passed, fetchUser middleware is authenticating the request
+/expense/get:id : get a particular expense (for test purposes)
+/expense/new: create new expense is being created for a user, fetchUser middleware is authenticating the request
+/expense/put: For future use(to add fucntionality to update expenses details)
+/expense/delete: For deleting expense , fetchUser middleware is authenticating the request
+
+/user/auth: For login page, authnticate email and password
+/user/new:  for signup page , create new user
+/user/fetUser: Getuser details with token provided. Login required
+/user/delete:  Autheticate the request(fetUser.js middleware), Authorize the user access level(checkPermissions.js middleware), and delete if respective user is present
+/changeRole: user->moderator or moderator ->user, only admin can change role
