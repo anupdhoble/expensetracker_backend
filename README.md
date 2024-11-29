@@ -90,7 +90,7 @@ This project implements a secure **Authentication** and **Authorization** system
    - **MongoDB**: Database for storing user data.
    - **Mongoose**: ODM for interacting with MongoDB in an object-oriented way.
 
-##Routes
+## Routes Defined in code:
 /expense/getAll : get all expenses of the userid passed, fetchUser middleware is authenticating the request
 /expense/get:id : get a particular expense (for test purposes)
 /expense/new: create new expense is being created for a user, fetchUser middleware is authenticating the request
