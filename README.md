@@ -2,15 +2,20 @@ Name: Anup Dhoble
 Email: anupdhoble15@gmail.com
 Resume: https://anupdhoble.tech/resume
 
+
+
 # Authentication and Authorization with Role-Based Access Control (RBAC)
+
+> Demonstration Video :-> https://www.youtube.com/watch?v=wrzsYyMSCko&t=1s
+[![Video Title](https://img.youtube.com/vi/wrzsYyMSCko/0.jpg)](https://www.youtube.com/watch?v=wrzsYyMSCko)
 
 > **Disclaimer**: The frontend code for this project was used as a foundation from a previous project. It already included the logic for creating expenses. In this project, I have added additional features for **Authentication**, **Authorization**, and **Role-Based Access Control (RBAC)**. These features were integrated to secure the application and manage user access based on roles such as Admin, Moderator, and User.
 
 > **Note**: Due to some dependency issues and problems with the `dotenv` library, I am currently facing errors in deploying the frontend React.js application on **Netlify**. I am working to resolve these issues and will update the deployment link once fixed. **But frontend code is included in directory :- Frontend**
 
 > Backend is succefully deployed on Render : https://expensetracker-backend-gu9c.onrender.com
-> Demonstration Video :-> https://www.youtube.com/watch?v=wrzsYyMSCko&t=1s
-[![Video Title](https://img.youtube.com/vi/wrzsYyMSCko/0.jpg)](https://www.youtube.com/watch?v=wrzsYyMSCko)
+
+
 
 ---
 
